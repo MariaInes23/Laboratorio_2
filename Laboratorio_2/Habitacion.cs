@@ -20,6 +20,22 @@ namespace Laboratorio_2
             Disponible = disponible;
             ClienteAsignado = cliente;
         }
+        public string MostrarInformacion()
+        {
+            return $"Nombre: {Nombre}, Precio: {PrecioPorNoche}, Disponibilidad: {Disponible}, Cliente: {ClienteAsignado}";
+        }
 
+        public double CambiarSiponibilidad()
+        {
+            return
+        }
+        public string AsignarCliente()
+        {
+            return
+        }
+        public string LiberarHabitacion()
+        {
+            return
+        }
     }
 }
