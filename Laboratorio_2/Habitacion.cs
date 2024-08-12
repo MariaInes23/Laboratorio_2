@@ -8,34 +8,52 @@ namespace Laboratorio_2
 {
     public class Habitacion
     {
-        public string Nombre { get; set; }
+        public int Numero { get; set; }
         public double PrecioPorNoche { get; set; }
         public bool Disponible { get; set; }
         public string ClienteAsignado { get; set; }
 
-        public Habitacion(string nombre, double precio, bool disponible, string cliente)
+        public Habitacion(int numero, double precioPorNoche)
         {
-            Nombre = nombre;
-            PrecioPorNoche = precio;
-            Disponible = disponible;
-            ClienteAsignado = cliente;
-        }
-        public string MostrarInformacion()
-        {
-            return $"Nombre: {Nombre}, Precio: {PrecioPorNoche}, Disponibilidad: {Disponible}, Cliente: {ClienteAsignado}";
+            Numero = numero;
+            PrecioPorNoche = precioPorNoche;
+            Disponible = true;
+            ClienteAsignado = string.Empty;
         }
 
-        public double CambiarSiponibilidad()
+        public static void MostrarInformacion()
         {
-            return
+            Console.WriteLine($"Habitación {Numero} - Precio por noche: {PrecioPorNoche} - Disponible: {Disponible}");
+            if (!Disponible)
+            {
+                Console.WriteLine($"Cliente Asignado: {ClienteAsignado}");
+            }
         }
-        public string AsignarCliente()
+
+        public void CambiarDisponibilidad(bool disponible)
         {
-            return
+            Disponible = disponible;
         }
-        public string LiberarHabitacion()
+
+        public void AsignarCliente(string nombreCliente)
         {
-            return
+            if (Disponible)
+            {
+                ClienteAsignado = nombreCliente;
+                CambiarDisponibilidad(false);
+                Console.WriteLine($"Habitación {Numero} asignada a {nombreCliente}.");
+            }
+            else
+            {
+                Console.WriteLine($"La habitación {Numero} no está disponible.");
+            }
+        }
+
+        public void LiberarHabitacion()
+        {
+            ClienteAsignado = string.Empty;
+            CambiarDisponibilidad(true);
+            Console.WriteLine($"Habitación {Numero} liberada.");
         }
     }
 }
